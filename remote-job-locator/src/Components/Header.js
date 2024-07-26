@@ -1,14 +1,14 @@
 import React from 'react'
 // import { useState } from 'react'
 import '../Styling/Header.css'
-import remote from '../Assets/Remote2.png'
+import remote from '../Assets/Remote3.png'
 
 function Header() {
 
   return (
     <div className='headerWrapper'>
         <img src={remote} alt='logo'/>
-        <h1>Welcome to Remove Job Locator!</h1>
+        <h1>Find your dream remote job!</h1>
     </div>
   )
 }
