@@ -1,0 +1,28 @@
+.mainPostingsWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 60vw;
+    height: 15vh;
+    max-width: 60vw;
+    max-height: 15vh;
+    border: 2px solid black;
+    margin: 15px;
+}
+
+.contentWrapper {
+    align-items: center;
+}
+
+.positionWrapper {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 10px;
+}
+
+.companyLogo {
+    width: 70%;
+    max-width: 70%;
+}
