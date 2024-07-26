@@ -1,8 +1,11 @@
 import React from 'react'
+import '../Styling/Footer.css'
 
 function Footer() {
   return (
-    <div>Footer</div>
+    <div className='footerWrapper'>
+        <h3 className='footerText'>Est. 2024</h3>
+    </div>
   )
 }
 

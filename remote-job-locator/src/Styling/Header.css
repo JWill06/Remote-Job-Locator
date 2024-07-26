@@ -1,8 +1,10 @@
 .headerWrapper {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 150px;
+    color: white;
     text-align: center;
     background-image:  linear-gradient(to bottom, #5de0e6,#004aad);
     img {
