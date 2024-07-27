@@ -11,6 +11,7 @@ function Postings() {
     const [error, setError] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    
 
 useEffect(() => {
     const loadJobs = async () => {
@@ -20,11 +21,12 @@ useEffect(() => {
             setJobs(jobs)
             setLoading(false)
         } catch (error) {
-            setError(error,'Sorry, we are experiencing an issue. Please try again later!')
+            setError('Sorry, we are experiencing an issue. Please try again later!');
         }
     }
     loadJobs()
-}, [])
+}, []);
+
 
 const totalPages = Math.ceil(allJobs.length / itemsPerPage);
 const minPage = Math.max(currentPage - 2, 1);
@@ -41,7 +43,8 @@ return (
                 <div className='firstContent'>
                     <p className='title'><strong>Position: </strong>{job.title}</p>
                     <p className='company'><strong>Company: </strong>{job.company_name}</p>
-                    <p className='pay'><strong>Pay: </strong> {job.salary ? job.salary : 'Not Available'}</p>
+                    <p className='pay'><strong>Pay: </strong> {job.salary ? job.salary : 'Not Available'}
+                    </p>
                 </div>
                 <div className='secondContent'>
                 <p className='title'><strong>Posted: </strong>{moment(job.publication_date).format('MMM DD YYYY')}</p>

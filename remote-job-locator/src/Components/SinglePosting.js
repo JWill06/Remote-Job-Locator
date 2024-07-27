@@ -18,7 +18,6 @@ function SinglePosting() {
               const jobs = await fetchJobs(); 
               const foundJob = jobs.find(job => job.id === parseInt(id)); 
               if (foundJob) {
-                // Convert HTML description to plain text here
                 const tempDiv = document.createElement("div");
                 tempDiv.innerHTML = foundJob.description;
                 foundJob.plainDescription = tempDiv.textContent || tempDiv.innerText || "";
