@@ -3,6 +3,7 @@ import fetchJobs from './ApiCall'
 import '../Styling/Postings.css'
 import moment from 'moment'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 function Postings() {
     const [allJobs, setJobs] = useState([])
@@ -19,7 +20,7 @@ useEffect(() => {
             setJobs(jobs)
             setLoading(false)
         } catch (error) {
-            setError('Sorry, we are experiencing an issue. Please try again later!')
+            setError(error,'Sorry, we are experiencing an issue. Please try again later!')
         }
     }
     loadJobs()
@@ -45,7 +46,7 @@ return (
                 <div className='secondContent'>
                 <p className='title'><strong>Posted: </strong>{moment(job.publication_date).format('MMM DD YYYY')}</p>
                     <p className='company'><strong>Candidate Location: </strong>{job.candidate_required_location}</p>
-                        <Link to={`/${job.title}`} className='moreDetails'>More Details</Link>
+                        <Link to={`/posting/${job.id}`} className='moreDetails'>...More Details</Link>
                 </div>
             </div>
         </div>
@@ -63,6 +64,13 @@ return (
         </div>
         </>
 )
+}
+
+Postings.propTypes = {
+    jobs: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        publication_date: PropTypes.number.isRequired,
+    })
 }
      
 
