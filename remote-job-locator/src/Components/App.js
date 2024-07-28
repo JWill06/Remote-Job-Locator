@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import Postings from './Postings';
 import Footer from './Footer';
 import SinglePosting from './SinglePosting';
+import SavedPostings from './SavedPostings';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<LandingPage />}/>
         <Route path='/postings' element={<Postings />}/>
         <Route path='/posting/:id' element={<SinglePosting />}/>
+        <Route path='/savedPostings' element={<SavedPostings />}/>
         <Route path='*' element='PAGE DOES NOT EXIST, TRY AGAIN!'/>
       </Routes>
       </div>

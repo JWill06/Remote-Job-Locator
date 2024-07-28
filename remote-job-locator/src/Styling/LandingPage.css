@@ -1,0 +1,28 @@
+.landingPageWrapper {
+    width: 98.9vw; 
+    height: 100vh; 
+    background-image: url('../Assets/remoteWorking.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    text-align: center; 
+    justify-content: center;
+    color: white; 
+    padding: 0;
+    margin: 0;
+}
+
+.postingsButton{
+    width: 20vw;
+    height: 2rem;
+    background-color: antiquewhite;
+    border-radius: 5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.allPostings {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}

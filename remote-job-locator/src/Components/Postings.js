@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 function Postings() {
     const [allJobs, setJobs] = useState([])
-    const [isLoading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -31,6 +31,33 @@ useEffect(() => {
 const totalPages = Math.ceil(allJobs.length / itemsPerPage);
 const minPage = Math.max(currentPage - 2, 1);
 const maxPage = Math.min(currentPage + 2, totalPages);
+
+if (loading) {
+    return  <p className='loadingText'><span>.</span>
+    <span>.</span>
+    <span>.</span>
+    <span>l</span>
+    <span>o</span>
+    <span>a</span>
+    <span>d</span>
+    <span>i</span>
+    <span>n</span>
+    <span>g</span>
+    </p>
+  }
+
+  if (error) {
+    return (
+      <div>
+        <p>{error}</p>
+      </div>
+    );
+  }
+
+  const filter = (e) => {
+    
+  }
+
 
 return (
     <>

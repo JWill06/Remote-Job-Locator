@@ -1,84 +1,98 @@
-import React, { useState, useEffect } from 'react'
-import moment from 'moment'
-import fetchJobs from './ApiCall'
-import { useParams } from 'react-router-dom'
-import '../Styling/SinglePosting.css'
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+import fetchJobs from './ApiCall';
+import { Link, useParams } from 'react-router-dom';
+import '../Styling/SinglePosting.css';
+import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
+import cheerio from 'cheerio';
 
 function SinglePosting() {
-  const [job, setJob] = useState(null);
+  const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [readMore, setReadMore] = useState(false)
-  const { id } = useParams(); 
+  const { id } = useParams();
 
   useEffect(() => {
-      const loadJobDetails = async () => {
-          try {
-              setLoading(true);
-              const jobs = await fetchJobs(); 
-              const foundJob = jobs.find(job => job.id === parseInt(id)); 
-              if (foundJob) {
-                const tempDiv = document.createElement("div");
-                tempDiv.innerHTML = foundJob.description;
-                foundJob.plainDescription = tempDiv.textContent || tempDiv.innerText || "";
-                setJob(foundJob);
-              } else {
-                  setError('Job not found');
+    const loadJobDetails = async () => {
+      try {
+        setLoading(true);
+        const jobs = await fetchJobs();
+        const foundJob = jobs.find(job => job.id === parseInt(id));
+        if (foundJob) {
+          const jsxDescription = ReactHtmlParser(foundJob.description, {
+            transform: (node, index) => {
+              if (node.type === 'tag' && node.name === 'a') {
+                if (node.attribs && node.attribs.href && node.attribs.href.trim()) {
+                  node.attribs.target = '_blank';
+                  return <a key={index} href={decodeURIComponent(node.attribs.href)}>{node.children[0].data}</a>;
+                }
               }
-              setLoading(false);
-          } catch (error) {
-              setError('Sorry, we are experiencing an issue. Please try again later!');
-              setLoading(false);
-          }
-      };
-      loadJobDetails();
+            },
+          });
+
+          const $ = cheerio.load(foundJob.description);
+          const aboutCompanyLinks = [];
+          $('a').each((index, element) => {
+            const href = $(element).attr('href');
+            if (href && href.startsWith('http')) {
+              aboutCompanyLinks.push(href);
+            }
+          });
+
+          setJob({ ...foundJob, jsxDescription, aboutCompanyUrls: aboutCompanyLinks });
+        } else {
+          setError('Job not found');
+        }
+        setLoading(false);
+      } catch (error) {
+        setError('Sorry, we are experiencing an issue. Please try again later!');
+        setLoading(false);
+      }
+    };
+    loadJobDetails();
   }, [id]);
 
   if (loading) {
-    return  <p className='loadingText'><span>.</span>
-    <span>.</span>
-    <span>.</span>
-    <span>l</span>
-    <span>o</span>
-    <span>a</span>
-    <span>d</span>
-    <span>i</span>
-    <span>n</span>
-    <span>g</span>
-    </p>
+    return <p className='loadingText'>Loading...</p>;
   }
 
   if (error) {
-    return (
-      <div>
-        <p>{error}</p>
-      </div>
-    );
+    return <div><p>{error}</p></div>;
   }
-
-  const formattedDescription = job?.description  ? (readMore ? job?.plainDescription : `${job?.plainDescription.substring(0, 500)}...`) : ';'
 
   return (
     <div className='detailsWrapper'>
       <div className='positionContent'>
-        <img src={job?.company_logo} alt={job?.company_name}/>
-        <p className='title'><strong>Position: </strong>{job?.title}</p>
-        <p className='company'><strong>Company: </strong>{job?.company_name}</p>
-        <p className='pay'><strong>Pay: </strong> {job?.salary ? job.salary : 'Not Available'}</p>
+        <img src={job.company_logo} alt={job.company_name} />
+        <p className='title'><strong>Position: </strong>{job.title}</p>
+        <p className='company'><strong>Company: </strong>{job.company_name}</p>
+        <p className='pay'><strong>Pay: </strong> {job.salary ? job.salary : 'Not Available'}</p>
       </div>
       <div className='locationContent'>
-        <p className='title'><strong>Posted: </strong>{moment(job?.publication_date).format('MMM DD YYYY')}</p>
-        <p className='company'><strong>Candidate Location: </strong>{job?.candidate_required_location}</p>
-        <p className='description'><strong>Job Description: </strong> {formattedDescription}
-        <span className='read-more-link' onClick={() => setReadMore(!readMore)}>
-        {readMore ? 'Read Less' : 'Read More'}
-    </span>
-    </p>
-      </div>
+        <p className='title'><strong>Posted: </strong>{moment(job.publication_date).format('MMM DD YYYY')}</p>
+        <p className='company'><strong>Candidate Location: </strong>{job.candidate_required_location}</p>
+        <p className='description'><strong>Job Description: </strong>{job.jsxDescription}</p>
+        {job?.aboutCompanyUrls?.length === 0 ? (
+        <p>No URL provided, please contact the company or visit their main site.</p>
+      ) : (
+        job?.aboutCompanyUrls?.map((url, index) => (
+          <button
+            key={index}
+            className='companyPosting'
+            onClick={() => {
+              const absoluteUrl = url.startsWith('http://') || url.startsWith('https://')
+                ? url
+                : 'https://' + url;
+              window.open(absoluteUrl, '_blank');
+            }}
+          >
+            Visit Company Website
+          </button>
+        ))
+      )}
     </div>
+  </div>
   );
 }
 
-
-
-export default SinglePosting
+export default SinglePosting;

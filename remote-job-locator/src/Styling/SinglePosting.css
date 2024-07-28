@@ -9,9 +9,34 @@
     margin: 5px;
 }
 
-.positionContent img {
-    width: 100%;
+.positionContent { 
+    width: 25vw;
+    margin: 10px;
+    padding: 10px;
+    border-right: 2px solid black;
+    img {
+    width: 80%;
     border-radius: 50%;
+    }
+}
+
+.locationContent {
+    width: 100vw;
+    text-align: start;
+}
+
+.companyPosting {
+    width: 15vw;
+    background-color: lightblue;
+    margin: 5px;
+    border: none;
+    border-radius: 2.5rem;
+}
+
+.companyLink {
+    text-decoration: none;
+    color: white;
+
 }
 
 .read-more-link {
