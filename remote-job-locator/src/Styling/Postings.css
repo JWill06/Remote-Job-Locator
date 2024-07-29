@@ -6,7 +6,7 @@
     width: 60vw;
     height: fit-content;
     max-width: 60vw;
-    max-height: 25vh;
+    /* max-height: 25vh; */
     border-radius: 2rem;
     margin: 15px;
     background-color: antiquewhite;
@@ -21,8 +21,41 @@
 
 .secondContent, 
 .firstContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin: 5px;
-    width: 50%
+    width: 50%;
+    height: fit-content;
+    padding: 5px;
+}
+
+input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+input::after {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.filterInputs {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    letter-spacing: .5px;
+}
+
+.titleFilter,
+.locationFilter {
+    display: flex;
+    margin: 5px;
+    align-items: center;
 }
 
 
@@ -33,6 +66,16 @@
 
 .moreDetails {
     text-decoration: none;
+}
+
+.saveForLater {
+    width: 25%;
+    height: 15%;
+    max-height: 15%;
+    margin-top: 15px;
+    border-radius: 2.5rem;
+    border: 2px solid lightblue;
+    cursor: pointer;
 }
 
 .buttonSection  button {

@@ -85,11 +85,16 @@ function SinglePosting() {
                 : 'https://' + url;
               window.open(absoluteUrl, '_blank');
             }}
+            style={{content: `${url}`}}
+            title={`Visit ${url}`}
           >
             Visit Site
           </button>
         ))
       )}
+      <button className='backButton'>
+        <Link className='backLink' to='/postings'>Back</Link>
+      </button>
     </div>
   </div>
   );

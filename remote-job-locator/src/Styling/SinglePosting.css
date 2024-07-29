@@ -44,6 +44,25 @@
     cursor: pointer;
 }
 
+.backButton {
+    width: 10%;
+    background-color: white;
+    border: none;
+    border-radius: 2.5rem;
+}
+
+.backLink {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.companyPosting {
+    cursor: pointer;
+}
+
+
 .loadingText {
     font-size: 50px;
 }
@@ -80,6 +99,9 @@
 }
 .loadingText span:nth-child(8){
     animation-delay: 0.24s;
+}
+.loadingText span:nth-child(9){
+    animation-delay: .24s;
 }
 .loadingText span:nth-child(9){
     animation-delay: .25s;

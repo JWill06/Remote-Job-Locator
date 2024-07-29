@@ -5,6 +5,7 @@ import moment from 'moment'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
+import SavedPostings from './SavedPostings'
 
 function Postings() {
     const [allJobs, setJobs] = useState([])
@@ -12,7 +13,9 @@ function Postings() {
     const [error, setError] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
-    const [filteredJob, setFilteredJob] = useState(null);
+    const [filterLocation, setFilterLocation] = useState('');
+    const [filterTitle, setFilterTitle] = useState('');
+    const [saved, setSaved] = useState([]);
     
 
 useEffect(() => {
@@ -29,29 +32,50 @@ useEffect(() => {
     loadJobs()
 }, []);
 
+const addForLater = (job) => {
+    setSaved(prevSaved => [...prevSaved, job])
+}
+
+const handleDelete = (jobId) => {
+    setSaved(prevSaved => prevSaved.filter(savedJob => savedJob.id !== jobId))
+}
 
 const jobOptions = [...new Set(allJobs.map(job => job.candidate_required_location))].map(location => ({
     value: location,
     label: location
 }));
 
-  const handleChange = (selectedOption) => {
-    setFilteredJob(selectedOption);
+  const handleChange = (e) => {
+    const { name, value} = e.target;
+    switch (name) {
+        case 'filterTitle':
+            setFilterTitle(value)
+            break;
+        default:
+            break;
+    }
   }
 
-  let filteredJobs = allJobs;
-  
-  if(filteredJob){
-      filteredJobs = allJobs.filter(job => job.candidate_required_location === filteredJob.label)
-  };
+  const handleSelectedFilter = (selectedOption) => {
+    setFilterLocation(selectedOption ? selectedOption.label : '')
+  }
 
+  
+  const filteredJobs = allJobs.filter(job => {
+    const locationMatches = filterLocation ? job.candidate_required_location.toLowerCase().includes(filterLocation.toLocaleLowerCase()) : true;
+    const titleMatches = filterTitle ? job.title.toLowerCase().includes(filterTitle.toLowerCase()) : true;
+    return locationMatches && titleMatches 
+  });
+
+const totalMatchingItems = filteredJobs.length;
 
 const totalPages = Math.ceil(filteredJobs.length / itemsPerPage);
 const minPage = Math.max(currentPage - 2, 1);
 const maxPage = Math.min(currentPage + 2, totalPages);
 
 if (loading) {
-    return  <p className='loadingText'><span>.</span>
+    return  <p className='loadingText'>
+    <span>.</span>
     <span>.</span>
     <span>.</span>
     <span>l</span>
@@ -72,16 +96,43 @@ if (loading) {
     );
   }
 
+  {saved.map(save => (
+    <SavedPostings 
+        key={save.id}
+        favorite={save} 
+        onDelete={handleDelete} 
+    />
+))}
+
 
 return (
     <>
-    <label htmlFor='location'>Select By Location:</label>
-     <Select
+    <div className='filterInputs'>
+        <div className='titleFilter'>
+            <label htmlFor='filterTitle'>Search by title:</label>
+            <input
+                name="filterTitle"
+                type="text"
+                placeholder="Title"
+                value={filterTitle}
+                onChange={handleChange}
+            />
+        </div>
+        <div className='locationFilter'>
+            <label htmlFor='location'>Select By Location:</label>
+            <Select
               name='location'
               options={jobOptions}
-              onChange={handleChange}
-              placeholder="Search for a job..."
+              onChange={handleSelectedFilter}
+              placeholder="Location..."
             />
+        </div>
+
+    </div>
+    {totalMatchingItems > 0 &&
+
+<p className='displayingPages'> {`${totalMatchingItems}`} matching postings.</p>
+}
      {filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(job => (
         <div className='mainPostingsWrapper'>
             <div className='logoWrapper'>
@@ -98,12 +149,17 @@ return (
                 <p className='title'><strong>Posted: </strong>{moment(job.publication_date).format('MMM DD YYYY')}</p>
                     <p className='company'><strong>Candidate Location: </strong>{job.candidate_required_location}</p>
                         <Link to={`/posting/${job.id}`} className='moreDetails'>...More Details</Link>
+                    <button className='saveForLater' onClick={() => addForLater(job)}>Save</button>
                 </div>
             </div>
         </div>
     
 ))}
-<p className='displayingPages'>Currently Displaying 10 items per page.</p>
+{totalMatchingItems > 0 ? (
+    <p className='displayingPages'> {`${totalMatchingItems}`} matching postings.</p>
+) : (
+    <p className='displayingPages' style={{color: 'red'}}>Nothing to display, try a different search!</p>
+)}
 <div className='buttonSection'>
  <button onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))} disabled={currentPage === 1}>Previous</button>
             {Array.from({length: maxPage - minPage + 1}, (_, i) => i + minPage).map(pageNumber => (
@@ -118,10 +174,15 @@ return (
 }
 
 Postings.propTypes = {
-    allJobs: PropTypes.shape({
+    allJobs: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         publication_date: PropTypes.number.isRequired,
-    })
+        candidate_required_location: PropTypes.string.isRequired,
+        salary: PropTypes.number,
+        company_name: PropTypes.string.isRequired,
+        company_logo: PropTypes.string,
+    })).isRequired,
 }
      
 
