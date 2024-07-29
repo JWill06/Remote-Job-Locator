@@ -86,7 +86,7 @@ function SinglePosting() {
               window.open(absoluteUrl, '_blank');
             }}
           >
-            Visit Company Website
+            Visit Site
           </button>
         ))
       )}

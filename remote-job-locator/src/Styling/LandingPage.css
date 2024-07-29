@@ -1,15 +1,14 @@
 .landingPageWrapper {
-    width: 98.9vw; 
-    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 99.8vw; 
+    height: 110vh; 
     background-image: url('../Assets/remoteWorking.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
-    background-position: center; 
-    text-align: center; 
-    justify-content: center;
+    background-position: bottom; 
     color: white; 
-    padding: 0;
-    margin: 0;
 }
 
 .postingsButton{
@@ -25,4 +24,21 @@
     text-decoration: none;
     color: black;
     font-size: 18px;
+}
+
+/* .mainContent {
+    width: 50%;
+    height: 50%;
+    align-content: center;
+    background-color: rgba(#5de0e6,#004aad, #5de0e6, 0.75);
+    border-radius: 2.5rem;
+} */
+
+.mainContent {
+    width: 50%;
+    height: 50%;
+    align-content: center; 
+    justify-content: center; 
+    background-image: linear-gradient(to right, rgba(93, 224, 230, 0.75), rgba(0, 76, 173, 0.75)); /* Example gradient with transparency over an image */
+    border-radius: 2.5rem;
 }

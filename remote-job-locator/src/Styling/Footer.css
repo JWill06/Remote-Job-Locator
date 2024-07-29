@@ -1,10 +1,9 @@
 .footerWrapper {
-    width: 97.58vw;
+    width: 98vw;
     height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 5px; */
     padding: 10px;
     background-image:  linear-gradient(to top, #5de0e6,#004aad);
 }

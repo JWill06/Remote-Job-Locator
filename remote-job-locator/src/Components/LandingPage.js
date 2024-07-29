@@ -6,12 +6,13 @@ import workingSpace from '../Assets/remoteWorking.jpg'
 function LandingPage() {
   return (
     <div className='landingPageWrapper'>
+      <div className='mainContent'>
         <h1>Looking for your next or first remote job?</h1>
-        <h2>Here is an updated list of recently posted remote jobs.</h2>
-        <h3>Click below to get started!</h3>
+        <h2>Click below to get started!</h2>
         <button className='postingsButton'>
           <Link className='allPostings' to='/postings'>Remote Job Postings</Link>
         </button>
+      </div>
         </div>
   )
 }
