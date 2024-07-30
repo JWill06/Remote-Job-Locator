@@ -1,0 +1,22 @@
+.deletePosting {
+    width: 25%;
+    height: 15%;
+    max-height: 15%;
+    margin-top: 15px;
+    border-radius: 2.5rem;
+    border: 2px solid lightblue;
+    cursor: pointer;
+}
+
+.backToPostings {
+    width: 40%;
+    border-radius: 2.5rem;
+    background-color: antiquewhite;
+    border: 2px solid lightblue
+}
+
+.backToPostingsLink {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}

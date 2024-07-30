@@ -6,12 +6,11 @@ import Header from './Header';
 import { useEffect } from 'react';
 import Postings from './Postings';
 import Footer from './Footer';
+import SinglePosting from './SinglePosting';
+import SavedPostings from './SavedPostings';
 
 function App() {
 
-useEffect(() => {
-
-})
 
   return (
     <div className="App-container">
@@ -20,6 +19,9 @@ useEffect(() => {
       <Routes>
         <Route path='/' element={<LandingPage />}/>
         <Route path='/postings' element={<Postings />}/>
+        <Route path='/posting/:id' element={<SinglePosting />}/>
+        <Route path='/SavedPostings' element={<SavedPostings />}/>
+        <Route path='*' element='PAGE DOES NOT EXIST, TRY AGAIN!'/>
       </Routes>
       </div>
       <Footer />

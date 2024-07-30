@@ -8,7 +8,11 @@
 
 .itemWrapper {
   width: 98.9vw;
+  height: fit-content;
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  justify-content: center;
 }

@@ -1,8 +1,9 @@
 .headerWrapper {
     display: flex;
     justify-content: space-between;
+    padding: 5px;
     align-items: center;
-    width: 100%;
+    width: 98.28vw;
     height: 150px;
     color: white;
     text-align: center;
@@ -11,4 +12,14 @@
         width: 15vw;
         height: 20vh;
     }
+}
+
+.postingLinks {
+    display: flex;
+}
+
+.link1,
+.link2 {
+    text-decoration: none;
+    color: white;
 }
