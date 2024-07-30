@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import SavedPostings from './SavedPostings'
+import { useSavedJobs } from './SavedPostingsContext'
 
 function Postings() {
     const [allJobs, setJobs] = useState([])
@@ -15,7 +16,7 @@ function Postings() {
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [filterLocation, setFilterLocation] = useState('');
     const [filterTitle, setFilterTitle] = useState('');
-    const [saved, setSaved] = useState([]);
+    const { saved ,addForLater} = useSavedJobs();
     
 
 useEffect(() => {
@@ -32,13 +33,6 @@ useEffect(() => {
     loadJobs()
 }, []);
 
-const addForLater = (job) => {
-    setSaved(prevSaved => [...prevSaved, job])
-}
-
-const handleDelete = (jobId) => {
-    setSaved(prevSaved => prevSaved.filter(savedJob => savedJob.id !== jobId))
-}
 
 const jobOptions = [...new Set(allJobs.map(job => job.candidate_required_location))].map(location => ({
     value: location,
@@ -95,18 +89,10 @@ if (loading) {
       </div>
     );
   }
-
-  {saved.map(save => (
-    <SavedPostings 
-        key={save.id}
-        favorite={save} 
-        onDelete={handleDelete} 
-    />
-))}
-
-
-return (
-    <>
+  
+  
+  return (
+      <>
     <div className='filterInputs'>
         <div className='titleFilter'>
             <label htmlFor='filterTitle'>Search by title:</label>
@@ -134,7 +120,7 @@ return (
 <p className='displayingPages'> {`${totalMatchingItems}`} matching postings.</p>
 }
      {filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(job => (
-        <div className='mainPostingsWrapper'>
+        <div key={job.id}className='mainPostingsWrapper'>
             <div className='logoWrapper'>
                 <img className='companyLogo' src={job.company_logo} alt={job.company_name}/>
             </div>
@@ -149,7 +135,9 @@ return (
                 <p className='title'><strong>Posted: </strong>{moment(job.publication_date).format('MMM DD YYYY')}</p>
                     <p className='company'><strong>Candidate Location: </strong>{job.candidate_required_location}</p>
                         <Link to={`/posting/${job.id}`} className='moreDetails'>...More Details</Link>
-                    <button className='saveForLater' onClick={() => addForLater(job)}>Save</button>
+                        <button className={saved.find(savedJob => savedJob.id === job.id) ? 'alreadySaved' : 'saveForLater'} disabled={saved.find(savedJob => savedJob.id === job.id)} onClick={() => addForLater(job)} aria-label={`Save ${job.title} for later`}>
+                        {saved.find(savedJob => savedJob.id === job.id) ? 'saved' : 'save'}
+                        </button>
                 </div>
             </div>
         </div>
@@ -174,7 +162,8 @@ return (
 }
 
 Postings.propTypes = {
-    allJobs: PropTypes.arrayOf(PropTypes.shape({
+    allJobs: PropTypes.arrayOf(
+        PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         publication_date: PropTypes.number.isRequired,
@@ -182,7 +171,7 @@ Postings.propTypes = {
         salary: PropTypes.number,
         company_name: PropTypes.string.isRequired,
         company_logo: PropTypes.string,
-    })).isRequired,
+    }))
 }
      
 

@@ -5,12 +5,14 @@ import { Link, useParams } from 'react-router-dom';
 import '../Styling/SinglePosting.css';
 import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
 import cheerio from 'cheerio';
+import { useSavedJobs } from './SavedPostingsContext';
 
 function SinglePosting() {
   const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
+  const { saved ,addForLater} = useSavedJobs();
 
   useEffect(() => {
     const loadJobDetails = async () => {
@@ -95,6 +97,9 @@ function SinglePosting() {
       <button className='backButton'>
         <Link className='backLink' to='/postings'>Back</Link>
       </button>
+      <button className={saved.find(savedJob => savedJob.id === job.id) ? 'saved' : 'saveLater'} disabled={saved.find(savedJob => savedJob.id === job.id)} onClick={() => addForLater(job)} aria-label={`Save ${job.title} for later`}>
+        {saved.find(savedJob => savedJob.id === job.id) ? 'saved' : 'save'}
+        </button>
     </div>
   </div>
   );

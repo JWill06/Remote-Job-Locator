@@ -62,6 +62,17 @@
     cursor: pointer;
 }
 
+.saved,
+.saveLater {
+    width: 10%;
+    height: 2%;
+    max-height: 5%;
+    margin-top: 15px;
+    border-radius: 2.5rem;
+    border: 2px solid lightblue;
+    cursor: pointer;
+}
+
 
 .loadingText {
     font-size: 50px;

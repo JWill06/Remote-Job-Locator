@@ -20,7 +20,7 @@ function App() {
         <Route path='/' element={<LandingPage />}/>
         <Route path='/postings' element={<Postings />}/>
         <Route path='/posting/:id' element={<SinglePosting />}/>
-        <Route path='/savedPostings' element={<SavedPostings />}/>
+        <Route path='/SavedPostings' element={<SavedPostings />}/>
         <Route path='*' element='PAGE DOES NOT EXIST, TRY AGAIN!'/>
       </Routes>
       </div>
