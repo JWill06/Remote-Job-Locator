@@ -1,3 +1,10 @@
+.allSavedContent {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 80vh;
+}
+
 .deletePosting {
     width: 25%;
     height: 15%;
@@ -10,7 +17,7 @@
 }
 
 .backToPostings {
-    width: 40%;
+    width: 50%;
     border-radius: 2.5rem;
     background-color: antiquewhite;
     background-color: lightblue;
@@ -20,5 +27,6 @@
 .backToPostingsLink {
     text-decoration: none;
     color: black;
-    font-size: 25px;
+    font-size: 35px;
 }
+

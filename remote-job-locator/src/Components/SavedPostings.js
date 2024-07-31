@@ -8,15 +8,16 @@ function SavedPostings({favorite, onDelete}) {
     const { saved, handleDelete } = useSavedJobs(); // Directly use the context
 
     return (
-        !saved || saved.length === 0 ? (
-            <div>
+        <div className='allSavedContent'>
+        {!saved || saved.length === 0 ? (
+            <div className='noContentSaved'>
                 <h1>No current postings saved.</h1>
                 <h2>Click below to find some postings desired for you!</h2>
                 <button className='backToPostings'>
                     <Link className='backToPostingsLink' to='/postings'>Back to Postings</Link>
                 </button>
             </div>
-        ) : (
+) : 
             saved.map(fav => (
                 <div className='mainPostingsWrapper' key={fav.id}>
                     <div className='logoWrapper'>
@@ -36,8 +37,9 @@ function SavedPostings({favorite, onDelete}) {
                         </div>
                     </div>
                 </div>
-            ))
-        )
+            ))}
+            </div>
+        
     );
 }
 
