@@ -6,7 +6,6 @@
     justify-content: center;
     width: 80vw;
     height: fit-content;
-    /* min-height: 1000px; */
     max-width: 60vw;
     border-radius: 2rem;
     margin: 15px;
@@ -158,13 +157,64 @@ input::after {
 
     .firstContent,
     .secondContent {
-        font-size: 25px;
+        display: flex;
+        font-size: 20px;
+        width: 50%;
         margin: 10px;
+        flex-wrap: wrap;
     }
     
     .saveForLater, 
     .alreadySaved {
-    width: 4.59rem;
+    width: fit-content;
+    height: 15%;
+    max-height: 15%;
+    }
+    input {
+        font-size: 15px;
+    }
+    .filterInputs {
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+
+    }
+}
+
+@media (min-width: 300px) and (max-width: 393px){
+    .mainPostingsWrapper{
+        flex-direction: column;
+        width: 80vw;
+        height: fit-content;
+        max-width: 80vw;
+    }
+    
+    .contentWrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        text-align: start;
+    }
+    .logoWrapper{
+        margin-top: 5px;
+        width: 50%;
+    }
+    .companyLogo {
+        width: 50%;
+    }
+
+    .firstContent,
+    .secondContent {
+        display: flex;
+        font-size: 20px;
+        width: 50%;
+        margin: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .saveForLater, 
+    .alreadySaved {
+    width: fit-content;
     height: 15%;
     max-height: 15%;
     }

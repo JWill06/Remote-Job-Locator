@@ -27,3 +27,14 @@
     }
 }
 
+@media (min-width: 394px) and (max-width: 435px){
+    .footerWrapper{
+        font-size:  18px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 393px){
+    .footerWrapper{
+        font-size:  18px;
+    }
+}

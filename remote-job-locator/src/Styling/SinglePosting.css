@@ -228,6 +228,63 @@
         width: 100%;
         margin: 0;
         padding: 0;
+        flex-wrap: wrap;
+        border-right: none;
+        border-bottom: 2px solid black;
+        font-size: 20px;
+        img {
+        width: 50%;
+        }
+    }
+    
+    .locationContent {
+        width: 100%;
+        font-size: 20px;
+    }
+    
+    .singlePostingButtons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .backButton {
+        width: 10rem;
+        height: 3.5vh;
+        font-size: 12px;
+        max-width: 10rem;
+        max-height: 3.5vh;
+    }
+
+    .backLink {
+        font-size: 15px;
+    }
+    
+    .saved,
+    .saveLater {
+        width: 5rem;
+        height: 2rem;
+        font-size: 17px;
+        max-width: 5rem;
+        max-height: 2rem;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 393px){
+    .detailsWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 60vw;
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .positionContent { 
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
         border-right: none;
         border-bottom: 2px solid black;
         font-size: 20px;

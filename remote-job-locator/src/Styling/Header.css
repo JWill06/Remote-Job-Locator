@@ -99,3 +99,32 @@
         display: none;
     }
 }
+
+@media (min-width: 300px) and (max-width: 393px){
+    .headerWrapper {
+        height: 10rem;
+        width: 100%;
+        h1 {
+            font-size: 14px;
+        }
+        p {
+            font-size: 10px;
+        }
+        img {
+            width: 28vw;
+            height: 150px;
+        }
+    }
+
+    .postingLinks {
+        display: flex;
+        flex-direction: column;
+    }
+    .link1 {
+        border-bottom: 2px solid white;
+    }
+
+    .slash {
+        display: none;
+    }
+} 
