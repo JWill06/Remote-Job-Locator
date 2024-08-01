@@ -4,10 +4,12 @@ import moment from 'moment'
 import { useSavedJobs } from './SavedPostingsContext';
 import '../Styling/SavedPostings.css'
 
-function SavedPostings({favorite, onDelete}) {
-    const { saved, handleDelete } = useSavedJobs(); // Directly use the context
+function SavedPostings() {
+    const { saved, handleDelete } = useSavedJobs(); 
 
     return (
+        <div className='savedWrapper'>
+            <h1 className='mainHeader'>Saved Postings</h1>
         <div className='allSavedContent'>
         {!saved || saved.length === 0 ? (
             <div className='noContentSaved'>
@@ -38,6 +40,7 @@ function SavedPostings({favorite, onDelete}) {
                     </div>
                 </div>
             ))}
+            </div>
             </div>
         
     );

@@ -5,7 +5,6 @@
     min-height: 80vh;
     background-color: antiquewhite;
     border-radius: 2.5rem;
-    padding: 15px;
     margin: 10px;
 }
 
@@ -139,21 +138,21 @@
 
 @media (min-width: 821px) and (max-width: 1558px){
     .backButton {
-        width: 16%;
-        height: 2.59vh;
-        max-width: 16%;
-        max-height: 2.59vh;
+        width: 18%;
+        height: 2.75vh;
+        max-width: 18%;
+        max-height: 2.75vh;
     }
 
     .backLink {
-        font-size: 17px;
+        font-size: 20px;
     }
     
     .saved,
     .saveLater {
         width: 10%;
         height: 1.5%;
-        font-size: 17px;
+        font-size: 20px;
         max-width: 10%;
         max-height: 1.5%;
     }
@@ -195,17 +194,19 @@
     
     .backButton {
         width: 12rem;
-        height: 5vh;
-        font-size: 15px;
+        height: 3rem;
         max-width: 12rem;
-        max-height: 5vh;
+        max-height: 3rem;
+    }
+    
+    .backLink{
+        font-size: 22px;
     }
     
     .saved,
     .saveLater {
         width: 7rem;
         height: 3rem;
-        font-size: 17px;
         max-width: 7rem;
         max-height: 3rem;
         font-size: 25px;
@@ -215,43 +216,46 @@
 @media (min-width: 394px) and (max-width: 435px){
     .detailsWrapper {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         flex-wrap: wrap;
-        width: 80vw;
-        height: fit-content;
-        min-height: 80vh;
-        background-color: antiquewhite;
-        border-radius: 2.5rem;
+        width: 60vw;
         padding: 15px;
         margin: 10px;
     }
     
     .positionContent { 
-        /* display: flex; */
-        width: 80vw;
-        margin: 10px;
-        padding: 10px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
         border-right: none;
         border-bottom: 2px solid black;
+        font-size: 20px;
         img {
         width: 50%;
         }
     }
     
     .locationContent {
-        width: 100vw;
-        text-align: start;
+        width: 100%;
+        font-size: 20px;
     }
     
-    .singlePostingsButtons {
+    .singlePostingButtons {
         display: flex;
+        flex-direction: column;
+        width: 100%;
     }
     .backButton {
         width: 10rem;
-        height: 3vh;
-        font-size: 15px;
+        height: 3.5vh;
+        font-size: 12px;
         max-width: 10rem;
-        max-height: 3vh;
+        max-height: 3.5vh;
+    }
+
+    .backLink {
+        font-size: 15px;
     }
     
     .saved,
