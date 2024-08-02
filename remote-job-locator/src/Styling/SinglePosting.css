@@ -62,6 +62,14 @@
 }
 
 .companyPosting {
+    width: 10%;
+    height: fit-content;
+    font-size: 30px;
+    max-width: 10%;
+    max-height: fit-content;
+    border-radius: 2.5rem;
+    background-color: lightblue;
+    border: 2px solid lightblue;
     cursor: pointer;
 }
 
@@ -81,6 +89,7 @@
 .singlePostingsButtons {
     display: flex;
     justify-content: center;
+    margin-bottom: 55px;
 }
 
 .loadingText {
@@ -147,6 +156,9 @@
     .backLink {
         font-size: 20px;
     }
+    .companyPosting {
+        font-size: 20px;
+    }
     
     .saved,
     .saveLater {
@@ -202,6 +214,12 @@
     .backLink{
         font-size: 22px;
     }
+
+    .companyPosting {
+        font-size: 22px;
+        width: 8rem;
+        max-width: 8rem;
+    }
     
     .saved,
     .saveLater {
@@ -245,6 +263,7 @@
     .singlePostingButtons {
         display: flex;
         flex-direction: column;
+        align-content: start;
         width: 100%;
     }
     .backButton {
@@ -257,6 +276,12 @@
 
     .backLink {
         font-size: 15px;
+    }
+
+    .companyPosting {
+        font-size: 17px;
+        width: 8rem;
+        max-width: 8rem;
     }
     
     .saved,
@@ -313,6 +338,12 @@
 
     .backLink {
         font-size: 15px;
+    }
+
+    .companyPosting {
+        font-size: 17px;
+        width: 5.5rem;
+        max-width: 5.5rem;
     }
     
     .saved,
