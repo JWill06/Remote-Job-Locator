@@ -23,3 +23,26 @@
     text-decoration: none;
     color: white;
 }
+
+@media (min-width: 821px) and (max-width: 1559px) {
+    .headerWrapper img {
+        height: 20vh;
+    }
+}
+
+@media (min-width: 436px) and (max-width: 820px) {
+    .headerWrapper {
+        font-size: 12px;
+        align-items: center;
+        width: 96.7vw;
+        height: 120px;
+        img {
+            width: 15vw;
+            height: 10vh;
+        }
+    }
+    .link1,
+    .link2 {
+    font-size: 14px;
+}
+}

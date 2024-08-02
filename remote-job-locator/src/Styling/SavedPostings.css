@@ -4,6 +4,7 @@
     max-height: 15%;
     margin-top: 15px;
     border-radius: 2.5rem;
+    background-color: lightblue;
     border: 2px solid lightblue;
     cursor: pointer;
 }
@@ -12,7 +13,8 @@
     width: 40%;
     border-radius: 2.5rem;
     background-color: antiquewhite;
-    border: 2px solid lightblue
+    background-color: lightblue;
+    border: 2px solid lightblue;
 }
 
 .backToPostingsLink {

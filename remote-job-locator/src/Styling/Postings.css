@@ -75,6 +75,7 @@ input::after {
     max-height: 15%;
     margin-top: 15px;
     border-radius: 2.5rem;
+    background-color: lightblue;
     border: 2px solid lightblue;
     cursor: pointer;
 }

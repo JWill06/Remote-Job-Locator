@@ -95,7 +95,7 @@ function SinglePosting() {
         ))
       )}
       <button className='backButton'>
-        <Link className='backLink' to='/postings'>Back</Link>
+        <Link className='backLink' to='/postings'>Back to postings</Link>
       </button>
       <button className={saved.find(savedJob => savedJob.id === job.id) ? 'saved' : 'saveLater'} disabled={saved.find(savedJob => savedJob.id === job.id)} onClick={() => addForLater(job)} aria-label={`Save ${job.title} for later`}>
         {saved.find(savedJob => savedJob.id === job.id) ? 'saved' : 'save'}

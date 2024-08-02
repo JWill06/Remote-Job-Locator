@@ -6,7 +6,7 @@
     background-color: antiquewhite;
     border-radius: 2.5rem;
     padding: 15px;
-    margin: 5px;
+    margin: 10px;
 }
 
 .positionContent { 
@@ -16,7 +16,6 @@
     border-right: 2px solid black;
     img {
     width: 80%;
-    border-radius: 50%;
     }
 }
 
@@ -45,10 +44,14 @@
 }
 
 .backButton {
-    width: 10%;
-    background-color: white;
+    width: 14%;
+    height: 2.4%;
+    max-height: 2.4%;
+    max-width: 14%;
+    background-color: lightblue;
     border: none;
     border-radius: 2.5rem;
+    margin: 5px;
 }
 
 .backLink {
@@ -65,10 +68,12 @@
 .saved,
 .saveLater {
     width: 10%;
-    height: 2%;
-    max-height: 5%;
-    margin-top: 15px;
+    height: 2.5%;
+    font-size: 15px;
+    max-width: 10%;
+    max-height: 9%;
     border-radius: 2.5rem;
+    background-color: lightblue;
     border: 2px solid lightblue;
     cursor: pointer;
 }

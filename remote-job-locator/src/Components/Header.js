@@ -11,7 +11,7 @@ function Header() {
         <NavLink to='/'>
         <img src={remote} alt='logo'/>
         </NavLink> 
-        <h1>Find your dream remote job!</h1>
+        <h1>Find your next remote job!</h1>
         <div className='postingLinks'>
           <Link className='link1'to='/postings'>
           <p>All postings</p>
