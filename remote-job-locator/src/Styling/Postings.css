@@ -3,13 +3,16 @@
     flex-direction: row;
     align-items: center;
     text-align: center;
-    width: 60vw;
+    justify-content: center;
+    width: 80vw;
     height: fit-content;
     max-width: 60vw;
-    /* max-height: 25vh; */
     border-radius: 2rem;
     margin: 15px;
     background-color: antiquewhite;
+    img {
+        width: 100%;
+    }
 }
 
 .contentWrapper {
@@ -28,9 +31,11 @@
     width: 50%;
     height: fit-content;
     padding: 5px;
+    font-size: 30px;
 }
 
 input {
+    font-size: 30px;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -44,11 +49,11 @@ input::after {
 
 .filterInputs {
     display: flex;
-    justify-content: space-between;
     text-align: center;
     margin: 5px;
     padding: 5px;
     letter-spacing: .5px;
+    font-size: 30px;
 }
 
 .titleFilter,
@@ -58,10 +63,13 @@ input::after {
     align-items: center;
 }
 
+.logoWrapper {
+    width: 10vw;
+}
 
 .companyLogo {
-    width: 70%;
-    max-width: 70%;
+    width: 80%;
+    max-width: 80%;
 }
 
 .moreDetails {
@@ -72,6 +80,7 @@ input::after {
 .alreadySaved {
     width: 25%;
     height: 15%;
+    font-size: 25px;
     max-height: 15%;
     margin-top: 15px;
     border-radius: 2.5rem;
@@ -82,4 +91,140 @@ input::after {
 
 .buttonSection  button {
         width: fit-content;
+        font-size: 30px;
+        margin-bottom: 15px;
+}
+
+.noContentSaved {
+    font-size: 25px;
+}
+
+.displayingPages {
+    font-size: 30px;
+}
+
+@media (min-width: 436px) and (max-width: 820px){
+    .mainPostingsWrapper {
+        flex-direction: column;
+    }
+
+    .contentWrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        text-align: start;
+    }
+    .logoWrapper {
+        margin-top: 5px;
+        width: 40%;
+    }
+    input {
+        font-size: 15px;
+    }
+    .filterInputs {
+        display: flex;
+        font-size: 15px;
+    }
+
+    .saveForLater,
+    .alreadySaved {
+        width: 5.5rem;
+        height: 2rem;
+    }
+}
+
+@media (min-width: 394px) and (max-width: 435px){
+    .mainPostingsWrapper{
+        flex-direction: column;
+        width: 80vw;
+        height: fit-content;
+        max-width: 80vw;
+    }
+    
+    .contentWrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        text-align: start;
+    }
+    .logoWrapper{
+        margin-top: 5px;
+        width: 50%;
+    }
+    .companyLogo {
+        width: 50%;
+    }
+
+    .firstContent,
+    .secondContent {
+        display: flex;
+        font-size: 20px;
+        width: 50%;
+        margin: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .saveForLater, 
+    .alreadySaved {
+    width: fit-content;
+    height: 15%;
+    max-height: 15%;
+    }
+    input {
+        font-size: 15px;
+    }
+    .filterInputs {
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+
+    }
+}
+
+@media (min-width: 300px) and (max-width: 393px){
+    .mainPostingsWrapper{
+        flex-direction: column;
+        width: 80vw;
+        height: fit-content;
+        max-width: 80vw;
+    }
+    
+    .contentWrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        text-align: start;
+    }
+    .logoWrapper{
+        margin-top: 5px;
+        width: 50%;
+    }
+    .companyLogo {
+        width: 50%;
+    }
+
+    .firstContent,
+    .secondContent {
+        display: flex;
+        font-size: 20px;
+        width: 50%;
+        margin: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .saveForLater, 
+    .alreadySaved {
+    width: fit-content;
+    height: 15%;
+    max-height: 15%;
+    }
+    input {
+        font-size: 15px;
+    }
+    .filterInputs {
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+
+    }
 }

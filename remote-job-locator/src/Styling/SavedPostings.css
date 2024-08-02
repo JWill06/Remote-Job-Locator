@@ -1,3 +1,11 @@
+.allSavedContent {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: fit-content;
+    min-height: 1078px;
+}
+
 .deletePosting {
     width: 25%;
     height: 15%;
@@ -7,10 +15,11 @@
     background-color: lightblue;
     border: 2px solid lightblue;
     cursor: pointer;
+    font-size: 25px;
 }
 
 .backToPostings {
-    width: 40%;
+    width: 50%;
     border-radius: 2.5rem;
     background-color: antiquewhite;
     background-color: lightblue;
@@ -20,5 +29,55 @@
 .backToPostingsLink {
     text-decoration: none;
     color: black;
-    font-size: 25px;
+    font-size: 35px;
+}
+
+@media (min-width: 821px) and (max-width: 1558px){
+    .deletePosting {
+        height: 2.3rem;
+        font-size: 20px;
+        width: 7rem;
+    }
+}
+
+@media (min-width: 436px) and (max-width: 820px){
+    .deletePosting {
+        height: 2.3rem;
+        font-size: 20px;
+        width: 7rem;
+    }
+
+    .noContentSaved {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 394px) and (max-width: 435px){
+    .deletePosting {
+        height: 2.3rem;
+        font-size: 20px;
+        width: 7rem;
+    }
+
+    .noContentSaved {
+        font-size: 12px;
+    }
+    .backToPostingsLink {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 393px){
+    .deletePosting {
+        height: 2.3rem;
+        font-size: 20px;
+        width: 7rem;
+    }
+
+    .noContentSaved {
+        font-size: 10px;
+    }
+    .backToPostingsLink {
+        font-size: 20px;
+    }
 }

@@ -14,8 +14,8 @@ function Postings() {
     const [error, setError] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
-    const [filterLocation, setFilterLocation] = useState('');
-    const [filterTitle, setFilterTitle] = useState('');
+    const [filterTitle, setFilterTitle] = useState(localStorage.getItem('filterTitle') || '');
+    const [filterLocation, setFilterLocation] = useState(localStorage.getItem('filterLocation') || '');
     const { saved ,addForLater} = useSavedJobs();
     
 
@@ -31,19 +31,35 @@ useEffect(() => {
         }
     }
     loadJobs()
+    if (localStorage.getItem('filterTitle')) {
+        setFilterTitle(localStorage.getItem('filterTitle'));
+    }
+    if (localStorage.getItem('filterLocation')) {
+        setFilterLocation(localStorage.getItem('filterLocation'));
+    }
 }, []);
 
+useEffect(() => {
+    const filteredJobs = allJobs.filter(job => {
+      const locationMatches = filterLocation === '' || job.candidate_required_location.toLowerCase().includes(filterLocation.toLowerCase());
+      const titleMatches = filterTitle ? job.title.toLowerCase().includes(filterTitle.toLowerCase()) : true;
+      return locationMatches && titleMatches;
+    });
+  }, [filterLocation, filterTitle]);
 
-const jobOptions = [...new Set(allJobs.map(job => job.candidate_required_location))].map(location => ({
-    value: location,
-    label: location
-}));
-
+  const jobOptions = [
+    { value: 'all', label: 'All Locations' },
+    ...Array.from(new Set(allJobs.map(job => job.candidate_required_location))).map(location => ({
+      value: location,
+      label: location
+    })),
+  ];
   const handleChange = (e) => {
     const { name, value} = e.target;
     switch (name) {
         case 'filterTitle':
             setFilterTitle(value)
+            localStorage.setItem('filterTitle', value);
             break;
         default:
             break;
@@ -51,8 +67,14 @@ const jobOptions = [...new Set(allJobs.map(job => job.candidate_required_locatio
   }
 
   const handleSelectedFilter = (selectedOption) => {
-    setFilterLocation(selectedOption ? selectedOption.label : '')
-  }
+    if (selectedOption && selectedOption.value === 'all') {
+      setFilterLocation('');
+      localStorage.setItem('filterLocation', ''); 
+    } else {
+      setFilterLocation(selectedOption ? selectedOption.label : '');
+      localStorage.setItem('filterLocation', selectedOption ? selectedOption.label : ''); 
+    }
+  };
 
   
   const filteredJobs = allJobs.filter(job => {
@@ -117,7 +139,7 @@ if (loading) {
     </div>
     {totalMatchingItems > 0 &&
 
-<p className='displayingPages'> {`${totalMatchingItems}`} matching postings.</p>
+<p className='displayingPages'> {`${totalMatchingItems}`}  postings.</p>
 }
      {filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(job => (
         <div key={job.id}className='mainPostingsWrapper'>
@@ -144,7 +166,7 @@ if (loading) {
     
 ))}
 {totalMatchingItems > 0 ? (
-    <p className='displayingPages'> {`${totalMatchingItems}`} matching postings.</p>
+    <p className='displayingPages'> {`${totalMatchingItems}`} postings.</p>
 ) : (
     <p className='displayingPages' style={{color: 'red'}}>Nothing to display, try a different search!</p>
 )}

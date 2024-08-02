@@ -4,15 +4,19 @@
   align-items: center;
   justify-items: center;
   font-family:Georgia, 'Times New Roman', Times, serif;
+  padding: 0;
+  margin: 0;
 }
 
 .itemWrapper {
-  width: 98.9vw;
+  width: 100%;
   height: fit-content;
-  min-height: 800px;
+  min-height: 1300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  align-content: center;
   justify-content: center;
 }
+

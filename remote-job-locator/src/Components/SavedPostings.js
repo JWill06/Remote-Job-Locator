@@ -4,19 +4,22 @@ import moment from 'moment'
 import { useSavedJobs } from './SavedPostingsContext';
 import '../Styling/SavedPostings.css'
 
-function SavedPostings({favorite, onDelete}) {
-    const { saved, handleDelete } = useSavedJobs(); // Directly use the context
+function SavedPostings() {
+    const { saved, handleDelete } = useSavedJobs(); 
 
     return (
-        !saved || saved.length === 0 ? (
-            <div>
+        <div className='savedWrapper'>
+            <h1 className='mainHeader'>Saved Postings</h1>
+        <div className='allSavedContent'>
+        {!saved || saved.length === 0 ? (
+            <div className='noContentSaved'>
                 <h1>No current postings saved.</h1>
                 <h2>Click below to find some postings desired for you!</h2>
                 <button className='backToPostings'>
                     <Link className='backToPostingsLink' to='/postings'>Back to Postings</Link>
                 </button>
             </div>
-        ) : (
+) : 
             saved.map(fav => (
                 <div className='mainPostingsWrapper' key={fav.id}>
                     <div className='logoWrapper'>
@@ -36,8 +39,10 @@ function SavedPostings({favorite, onDelete}) {
                         </div>
                     </div>
                 </div>
-            ))
-        )
+            ))}
+            </div>
+            </div>
+        
     );
 }
 
