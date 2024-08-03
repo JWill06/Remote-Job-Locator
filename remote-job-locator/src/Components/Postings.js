@@ -5,7 +5,6 @@ import moment from 'moment'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
-import SavedPostings from './SavedPostings'
 import { useSavedJobs } from './SavedPostingsContext'
 
 function Postings() {

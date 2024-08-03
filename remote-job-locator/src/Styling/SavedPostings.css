@@ -1,9 +1,7 @@
 .allSavedContent {
-    align-items: center;
-    align-content: center;
     justify-content: center;
     height: fit-content;
-    min-height: 1078px;
+    min-height: 1000px;
 }
 
 .deletePosting {

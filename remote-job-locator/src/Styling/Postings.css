@@ -31,7 +31,7 @@
     width: 50%;
     height: fit-content;
     padding: 5px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 input {
@@ -80,7 +80,7 @@ input::after {
 .alreadySaved {
     width: 25%;
     height: 15%;
-    font-size: 25px;
+    font-size: 15px;
     max-height: 15%;
     margin-top: 15px;
     border-radius: 2.5rem;
