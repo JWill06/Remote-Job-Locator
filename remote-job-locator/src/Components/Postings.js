@@ -106,7 +106,7 @@ if (loading) {
 
   if (error) {
     return (
-      <div>
+      <div className='errorMessage'>
         <p>{error}</p>
       </div>
     );
