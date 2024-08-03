@@ -13,7 +13,7 @@
     margin: 10px;
     padding: 10px;
     border-right: 2px solid black;
-    font-size: 35px;
+    font-size: 20px;
     img {
     width: 80%;
     }
@@ -22,32 +22,37 @@
 .locationContent {
     width: 100vw;
     text-align: start;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .companyPosting {
-    width: 10vw;
-    background-color: lightblue;
-    margin: 5px;
-    border: none;
+    width: 12%;
+    height: 2.5rem;
+    font-size: 5px;
+    max-width: 12%;
+    max-height: 5rem;
     border-radius: 2.5rem;
+    background-color: lightblue;
+    border: 2px solid lightblue;
+    cursor: pointer;
 }
 
 .companyLink {
     text-decoration: none;
     color: white;
-
+    font-size: 5px;
 }
 
 .backButton {
     width: 14%;
-    height: 5.5%;
-    max-height: 5.5%;
+    height: 20rem;
+    max-height: 50rem;
     max-width: 14%;
     background-color: lightblue;
     border: none;
     border-radius: 2.5rem;
     margin: 5px;
+    font-size: 10px;
 }
 
 .singlePostingsButtons {
@@ -57,19 +62,7 @@
 .backLink {
     text-decoration: none;
     color: black;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.companyPosting {
-    width: 10%;
-    height: fit-content;
-    font-size: 30px;
-    max-width: 10%;
-    max-height: fit-content;
-    border-radius: 2.5rem;
-    background-color: lightblue;
-    border: 2px solid lightblue;
+    font-size: 120px;
     cursor: pointer;
 }
 
@@ -148,9 +141,8 @@
 @media (min-width: 821px) and (max-width: 1558px){
     .backButton {
         width: 18%;
-        height: 2.75vh;
+        height: fit-content;
         max-width: 18%;
-        max-height: 2.75vh;
     }
 
     .backLink {
