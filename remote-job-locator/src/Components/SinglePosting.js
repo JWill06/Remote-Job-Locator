@@ -3,7 +3,7 @@ import moment from 'moment';
 import fetchJobs from './ApiCall';
 import { Link, useParams } from 'react-router-dom';
 import '../Styling/SinglePosting.css';
-import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
+import parse from 'html-react-parser';
 import cheerio from 'cheerio';
 import { useSavedJobs } from './SavedPostingsContext';
 
@@ -21,16 +21,7 @@ function SinglePosting() {
         const jobs = await fetchJobs();
         const foundJob = jobs.find(job => job.id === parseInt(id));
         if (foundJob) {
-          const jsxDescription = ReactHtmlParser(foundJob.description, {
-            transform: (node, index) => {
-              if (node.type === 'tag' && node.name === 'a') {
-                if (node.attribs && node.attribs.href && node.attribs.href.trim()) {
-                  node.attribs.target = '_blank';
-                  return <a key={index} href={decodeURIComponent(node.attribs.href)}>{node.children[0].data}</a>;
-                }
-              }
-            },
-          });
+          const jsxDescription = parse(foundJob.description);
 
           const $ = cheerio.load(foundJob.description);
           const aboutCompanyLinks = [];
