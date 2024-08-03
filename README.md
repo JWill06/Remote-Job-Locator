@@ -6,6 +6,8 @@ Remote Job Locator is built with React and tested with Cypress. This project was
 ## Preview
 ![remote-job-locator](https://github.com/user-attachments/assets/098d4772-bdb7-4390-9d90-1dba2129c52d)
 
+## Deployed Site!
+[Active Site](https://remote-job-locator.vercel.app/)
 
 ## Installation Instructions 
 ### To start the app
