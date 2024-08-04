@@ -27,10 +27,9 @@
 
 .companyPosting {
     width: 12%;
-    height: 2.5rem;
-    font-size: 5px;
+    height: fit-content;
     max-width: 12%;
-    max-height: 5rem;
+    max-height: 2rem;
     border-radius: 2.5rem;
     background-color: lightblue;
     border: 2px solid lightblue;
@@ -40,7 +39,6 @@
 .companyLink {
     text-decoration: none;
     color: white;
-    font-size: 5px;
 }
 
 .backButton {
@@ -70,7 +68,7 @@
 .saveLater {
     width: 10%;
     height: 2.5%;
-    font-size: 30px;
+    font-size: 20px;
     max-width: 10%;
     max-height: 9%;
     border-radius: 2.5rem;
@@ -149,14 +147,15 @@
         font-size: 20px;
     }
     .companyPosting {
-        font-size: 20px;
+        font-size: 15px;
+        margin: 2px;
     }
     
     .saved,
     .saveLater {
         width: 10%;
         height: 1.5%;
-        font-size: 20px;
+        font-size: 18px;
         max-width: 10%;
         max-height: 1.5%;
     }
